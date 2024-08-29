@@ -9,8 +9,6 @@ import {
   useMotionValueEvent,
 } from 'framer-motion';
 
-import './styles.css';
-
 const FoldableMap = () => {
   const [isFolded, setIsFolded] = useState(true);
   const xDrag = useMotionValue(0);
