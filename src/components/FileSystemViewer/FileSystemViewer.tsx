@@ -1,53 +1,36 @@
-import { FiFolder } from 'react-icons/fi';
+import Folder, { FolderType } from './Folder';
+
+const folders: FolderType[] = [
+  {
+    name: 'Home',
+    folders: [
+      {
+        name: 'Movies',
+        folders: [
+          {
+            name: 'Action',
+            folders: [
+              { name: '2000s', folders: [{ name: 'Popular' }] },
+              { name: '2010s' },
+            ],
+          },
+          { name: 'Comedy', folders: [{ name: '2000s' }] },
+        ],
+      },
+      { name: 'Music', folders: [{ name: 'Rock' }, { name: 'Classical' }] },
+      { name: 'Pictures' },
+      { name: 'Documents' },
+    ],
+  },
+];
 
 const FileSystemViewer = () => {
-  const folders = [
-    {
-      name: 'Movies',
-      folders: [
-        { name: 'Action', folders: [{ name: '2000s' }, { name: '2010s' }] },
-        { name: 'Comedy' },
-      ],
-    },
-    { name: 'Music', folders: [{ name: 'Rock' }, { name: 'Classical' }] },
-    { name: 'Pictures' },
-    { name: 'Documents' },
-  ];
-
   return (
     <div className="p-8 max-w-sm mx-auto">
       <ul>
-        <li className="my-1.5">
-          <span className="flex items-center gap-1.5">
-            <FiFolder className="size-6 text-sky-500" />
-            Home
-          </span>
-          <ul className="pl-6">
-            {folders.map((folder) => {
-              return (
-                <li key={folder.name} className="my-1.5">
-                  <span className="flex items-center gap-1.5">
-                    <FiFolder className="size-6 text-sky-500" />
-                    {folder.name}
-                  </span>
-
-                  <ul className="pl-6">
-                    {folder.folders?.map((folder) => {
-                      return (
-                        <li key={folder.name} className="my-1.5">
-                          <span className="flex items-center gap-1.5">
-                            <FiFolder className="size-6 text-sky-500" />
-                            {folder.name}
-                          </span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </li>
-              );
-            })}
-          </ul>
-        </li>
+        {folders.map((folder) => {
+          return <Folder folder={folder} key={folder.name} />;
+        })}
       </ul>
     </div>
   );
