@@ -41,7 +41,7 @@ const FoldableMap = () => {
           initial={{ rotate: 3 }}>
           <div className="grid grid-cols-3 [grid-area:1/1]">
             <motion.div
-              className="map-image origin-bottom-right border-r border-[rgb(255,255,255)]/[.1] shadow-2xl"
+              className="map-image origin-bottom-right border-r border-[rgb(255,255,255)]/[.1] shadow-2xl rounded-s-lg"
               style={{ x: xLeftSection, skewY: '-1deg' }}
             />
             <motion.div
@@ -54,7 +54,7 @@ const FoldableMap = () => {
               }
             />
             <motion.div
-              className="map-image origin-bottom-left border-l border-[rgb(255,255,255)]/[.1] shadow-2xl"
+              className="map-image origin-bottom-left border-l border-[rgb(255,255,255)]/[.1] shadow-2xl rounded-e-lg"
               style={{ x: xRightSection, skewY: '1deg' }}
             />
           </div>
