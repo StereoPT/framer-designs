@@ -30,11 +30,16 @@ const FoldableMap = () => {
   return (
     <div className="overflow-x-clip">
       <motion.div
+        className="relative flex flex-col items-center"
         animate={isFolded ? 'folded' : 'open'}
         variants={{ open: { scale: 1 }, folded: { scale: 0.9 } }}
         initial="folded">
-        <div className="mx-auto grid aspect-video max-h-[80vh] p-8">
-          <div className="grid grid-cols-3 [grid-area:1/1] aspect-video h-full w-full">
+        <motion.div
+          className="grid aspect-video max-h-[80vh] w-full min-w-[600px] p-8"
+          variants={{ open: { rotate: 0 }, hovering: { rotate: 0 } }}
+          whileHover="hovering"
+          initial={{ rotate: 3 }}>
+          <div className="grid grid-cols-3 [grid-area:1/1]">
             <motion.div
               className="map-image origin-bottom-right border-r border-[rgb(255,255,255)]/[.1] shadow-2xl"
               style={{ x: xLeftSection, skewY: '-1deg' }}
@@ -65,7 +70,7 @@ const FoldableMap = () => {
               timeConstant: 45,
             }}
           />
-        </div>
+        </motion.div>
         <motion.div
           className="flex w-full justify-center text-xl font-semibold md:text-4xl"
           variants={{
