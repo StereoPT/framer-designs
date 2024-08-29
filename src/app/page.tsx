@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { RouteMap } from '@/utils/routes';
+
 const Home = () => {
   return (
     <main className="flex flex-col gap-6 items-center justify-center min-h-screen p-4">
@@ -7,12 +9,13 @@ const Home = () => {
         Framer Designs
       </h1>
       <ul className="flex flex-col gap-2 min-w-[300px] text-lg">
-        <li>
-          <Link href="foldable-map">Foldable Map</Link>
-        </li>
-        <li>
-          <Link href="foldable-map">Recursive Component</Link>
-        </li>
+        {RouteMap.map((route) => {
+          return (
+            <li key={route.name}>
+              <Link href={route.href}>{route.name}</Link>
+            </li>
+          );
+        })}
       </ul>
     </main>
   );
